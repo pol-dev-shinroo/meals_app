@@ -21,6 +21,10 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   var _loadedInitData = false;
 
   //It's important to note that initState() is only called once during the lifecycle of a StatefulWidget, when the widget is first inserted into the widget tree.
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   void didChangeDependencies() {
