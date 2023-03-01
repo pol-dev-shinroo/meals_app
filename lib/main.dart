@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 import "./screens/categories_screen.dart";
@@ -36,11 +38,23 @@ class MyApp extends StatelessWidget {
             .copyWith(secondary: Colors.amber),
       ),
       // home: const CategoriesScreen(),
-      initialRoute: "/",
+      // initialRoute: "/",
       routes: {
         "/": (ctx) => const CategoriesScreen(),
         CategoryMealsScreen.routeName: (ctx) => const CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => const MealDetailScreen(),
+      },
+      // registering routes that are not registered in the routes map above. Hence, by default, if some route does not exist, it will render onGeneratedRoute instead
+      onGenerateRoute: (settings) {
+        print(settings.arguments);
+        // if (settings.name == "/meal-detail"){
+        //   return ...
+        // }
+        return MaterialPageRoute(builder: (ctx) => const CategoriesScreen());
+      },
+      // this is reached when flutter failed to build a screen with all other measures (last resort before it throws an error, flutter will try this fallback)
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => const CategoriesScreen());
       },
     );
   }
