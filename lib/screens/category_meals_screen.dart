@@ -1,19 +1,14 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+
 import "../dummy_data.dart";
+import "../widgets/meal_item.dart";
 
 class CategoryMealsScreen extends StatelessWidget {
   static const routeName = "/category-meals";
 
   const CategoryMealsScreen({super.key});
-
-  // final String categoryId;
-  // final String categoryTitle;
-
-  // CategoryMealsScreen(this.categoryId, this.categoryTitle, {super.key}) {
-  //   print('categoryId: $categoryId and categoryTitle: $categoryTitle');
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +27,13 @@ class CategoryMealsScreen extends StatelessWidget {
         ),
         body: ListView.builder(
           itemBuilder: (ctx, idx) {
-            return Text(categoryMeals[idx].title);
+            return MealItem(
+              title: categoryMeals[idx].title,
+              imageUrl: categoryMeals[idx].imageUrl,
+              duration: categoryMeals[idx].duration,
+              complexity: categoryMeals[idx].complexity,
+              affordability: categoryMeals[idx].affordability,
+            );
           },
           itemCount: categoryMeals.length,
         ));
