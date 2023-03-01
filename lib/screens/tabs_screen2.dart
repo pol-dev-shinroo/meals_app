@@ -2,21 +2,29 @@ import 'package:flutter/material.dart';
 import "./categories_screen.dart";
 import "./favorites_screen.dart";
 import "../widgets/main_drawer.dart";
+import "../models/meal.dart";
 
 class TabsScreen2 extends StatefulWidget {
-  const TabsScreen2({super.key});
+  final List<Meal> favoriteMeals;
+  const TabsScreen2(this.favoriteMeals, {super.key});
 
   @override
   State<TabsScreen2> createState() => _TabsScreen2State();
 }
 
 class _TabsScreen2State extends State<TabsScreen2> {
-  final List<Map<String, Object>> _pages = const [
-    {"page": CategoriesScreen(), "title": "Categories"},
-    {"page": FavoritesScreen(), "title": "Favorites"}
-  ];
+  late List<Map<String, Object>> _pages;
 
   int _selectedPageIndex = 0;
+
+  @override
+  void initState() {
+    _pages = [
+      {"page": const CategoriesScreen(), "title": "Categories"},
+      {"page": FavoritesScreen(widget.favoriteMeals), "title": "Favorites"}
+    ];
+    super.initState();
+  }
 
   void _selectPage(int idx) {
     setState(() {
