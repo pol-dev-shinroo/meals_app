@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DeliMeals',
       theme: ThemeData(
-        canvasColor: const Color.fromRGBO(225, 254, 229, 1),
+        canvasColor: const Color.fromARGB(255, 253, 255, 253),
         fontFamily: "Raleway",
         textTheme: ThemeData.light().textTheme.copyWith(
               displaySmall: const TextStyle(
