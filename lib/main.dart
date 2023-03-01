@@ -7,6 +7,7 @@ import "./screens/category_meals_screen.dart";
 import "./screens/meal_detail_screen.dart";
 import "./screens/tabs_screen.dart";
 import "./screens/tabs_screen2.dart";
+import "./screens/filters_screen.dart";
 
 void main() {
   runApp(const MyApp());
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         "/": (ctx) => const TabsScreen2(),
         CategoryMealsScreen.routeName: (ctx) => const CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => const MealDetailScreen(),
+        FiltersScreen.routeName: (ctx) => const FiltersScreen(),
       },
       // registering routes that are not registered in the routes map above. Hence, by default, if some route does not exist, it will render onGeneratedRoute instead
       onGenerateRoute: (settings) {

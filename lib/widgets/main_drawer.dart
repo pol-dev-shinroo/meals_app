@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import "../screens/filters_screen.dart";
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key});
 
-  Widget buildListtile(String title, IconData icon) {
+  // use builder method if there is not build (context), if so extract it => better optimization.
+  Widget buildListtile(
+      String title, IconData icon, void Function()? tapHandler) {
     return ListTile(
       leading: Icon(
         icon,
@@ -16,7 +19,7 @@ class MainDrawer extends StatelessWidget {
             fontSize: 24,
             fontWeight: FontWeight.bold),
       ),
-      onTap: () {},
+      onTap: tapHandler,
     );
   }
 
@@ -39,8 +42,20 @@ class MainDrawer extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          buildListtile("Meals", Icons.restaurant),
-          buildListtile("Filters", Icons.settings),
+          buildListtile(
+            "Meals",
+            Icons.restaurant,
+            () {
+              Navigator.of(context).pushNamed("/");
+            },
+          ),
+          buildListtile(
+            "Filters",
+            Icons.settings,
+            () {
+              Navigator.of(context).pushNamed(FiltersScreen.routeName);
+            },
+          ),
         ],
       ),
     );
