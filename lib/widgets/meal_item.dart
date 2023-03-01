@@ -49,6 +49,18 @@ class MealItem extends StatelessWidget {
             });
   }
 
+  Widget buildRows(dynamic text, IconData icon) {
+    return Row(
+      children: <Widget>[
+        const Icon(
+          Icons.work,
+        ),
+        const SizedBox(width: 6),
+        Text(text is int ? '$text min' : text),
+      ],
+    );
+  }
+
   const MealItem(
       {required this.id,
       required this.title,
@@ -107,32 +119,17 @@ class MealItem extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Row(
-                    children: <Widget>[
-                      const Icon(
-                        Icons.schedule,
-                      ),
-                      const SizedBox(width: 6),
-                      Text('$duration min'),
-                    ],
+                  buildRows(
+                    duration,
+                    Icons.schedule,
                   ),
-                  Row(
-                    children: <Widget>[
-                      const Icon(
-                        Icons.work,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(complexityText),
-                    ],
+                  buildRows(
+                    complexityText,
+                    Icons.work,
                   ),
-                  Row(
-                    children: <Widget>[
-                      const Icon(
-                        Icons.attach_money,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(affordabilityText),
-                    ],
+                  buildRows(
+                    affordabilityText,
+                    Icons.attach_money,
                   ),
                 ],
               ),
